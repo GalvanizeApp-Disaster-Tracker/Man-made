@@ -16,17 +16,6 @@ class App extends Component {
     this.setState({ currentLocation: body.data, countries: countryBody, isLoading: false });
   }
 
-  populateCountries(countryArray) {
-  let selected = document.getElementById("select-country");
-  for (let i = 0; i < countryArray.length; i++) {
-    let opt = countryArray[i].country;
-    let el = document.createElement("option");
-    el.textContent = opt;
-    el.value = opt;
-    selected.appendChild(el);
-  }
-}
-
 render() {
 
 
@@ -36,7 +25,7 @@ render() {
     return (
       <div className="App">
         <header className="App-header">
-          <NavBar data={this.state.data} countries={this.state.countries} />
+          <NavBar countries={this.state.countries} />
             HELLO
           </header>
         <body className="App-body">
