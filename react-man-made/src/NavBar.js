@@ -11,7 +11,7 @@ const NavBar = (props) => {
                         </li>
                     <li className="nav-item">
                         <a href="#">SEARCH SPECIFIC CITY AIR INDEX (SEARCH W/ BAR)</a>
-                        <Search />
+                        <Search countries={props.countries} />
                         </li>
                     <li className="nav-item">
                         <a href="#">LOGO (IMAGE)</a>
