@@ -12,7 +12,7 @@ const NavBar = (props) => {
                         </li>
                     <li className="nav-item">
                         <p>SEARCH</p>
-                        <Search countries={props.countries} />
+                        <Search countries={props.countries} setLocation={props.setLocation}/>
                         </li>
                     <li className="nav-item">
                         <img src={logo} alt="AQI logo"></img>
