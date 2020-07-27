@@ -2,11 +2,9 @@ package com.example.sprmanmade;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.squareup.okhttp.OkHttpClient;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -14,7 +12,7 @@ import java.util.Date;
 public class Disaster {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private long id;
     private String location;
     private String image;
@@ -58,7 +56,7 @@ public class Disaster {
 
     public String getArticleLink() { return articleLink; }
 
-    public void setArticleLink(String articleLink) { this.articleLink = articleLink}
+    public void setArticleLink(String articleLink) { this.articleLink = articleLink; }
 
     public Date getArticleDate() {
         return articleDate;
