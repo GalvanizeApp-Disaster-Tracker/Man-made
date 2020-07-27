@@ -4,9 +4,13 @@ import NavBar from './NavBar'
 
 
 class App extends Component {
-  state = {
-    isLoading: true,
-  };
+  constructor(props) {
+    super(props)
+    this.state = {
+      isLoading: true,
+    };
+    this.setCurrentLocation = this.setCurrentLocation.bind(this);
+  }
 
   async componentDidMount() {
     const response = await fetch("http://api.airvisual.com/v2/nearest_city?key=2dfa7b58-3bfb-4ec7-bddc-6cf7ec9b1713");
@@ -14,6 +18,12 @@ class App extends Component {
     const countries = await fetch("http://api.airvisual.com/v2/countries?key=2dfa7b58-3bfb-4ec7-bddc-6cf7ec9b1713");
     const countryBody = await countries.json();
     this.setState({ currentLocation: body.data, countries: countryBody, isLoading: false });
+  }
+
+  async setCurrentLocation(country, city, state) {
+    const response = await fetch("http://api.airvisual.com/v2/city?city=" + city + "&state=" + state + "&country=" + country + "&key=2dfa7b58-3bfb-4ec7-bddc-6cf7ec9b1713");
+    const body = await response.json();
+    this.setState({currentLocation: body.data});
   }
 
 render() {
@@ -25,12 +35,9 @@ render() {
     return (
       <div className="App">
         <header className="App-header">
-          <NavBar countries={this.state.countries} />
+          <NavBar countries={this.state.countries} setLocation={this.setCurrentLocation}/>
             HELLO
           </header>
-        <body className="App-body">
-
-        </body>
       </div>
     )
   }
