@@ -1,44 +1,17 @@
 import React from 'react';
 
 const Search = (props) => {
-    // function getLocation(urlData) {
-    //     window.scrollTo(0,0)
-    //     let data = fetch(urlData)
-    //       .then(result => result.json())
-    //       .then(data => this.setState({ currentLocation: data })) 
-    //   }    
-    
-    // function search_locations() { 
-    //     let input = document.getElementById('searchbar').value
-    //     input = input.toLowerCase(); 
-    //     let x = props.props.allPokemon; 
 
-    //     for (let i = 0; i < x.length; i++) {  
-    //         if (x[i].includes(input)) { 
-    //             let url = 'https://pokeapi.co/api/v2/pokemon/' + x[i];
-    //             getLocation(url);
-    //         } 
-    //     } 
-    // } 
-    function populateCountries(countryArray) {
-        let selected = document.getElementById("select-country");
-        for (let i = 0; i < countryArray.length; i++) {
-            let opt = countryArray[i].country;
-            let el = document.createElement("option");
-            el.textContent = opt;
-            el.value = opt;
-            selected.appendChild(el);
-        }
+    async function setStates(e) {
+        const response = await fetch("http://api.airvisual.com/v2/states?country=" + e.target.value + "&key=2dfa7b58-3bfb-4ec7-bddc-6cf7ec9b1713")
+        const body = await response.json();
+        body.map((state) => <option key={state.state} value={state.state}>{state.state}</option>)
     }
-    populateCountries(props.countries);
 
     return (
         <form >
-            {/* <input type='text' id ='searchbar' placeholder="Search..."></input> */}
-            {/* <input type='submit' ></input> */}
-            {/* <button type='button' onClick={search_pokemon()}> Search </button> */}
-            <select id="select-country">
-
+            <select id="select-country" onChange={setStates}>
+                {props.countries.data.map((country) => <option key={country.country} value={country.country}>{country.country}</option>)}
             </select>
             <select id="select-state">
 
