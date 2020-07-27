@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from "./aqi.jpg"
 import Search from "./Search"
 
 const NavBar = (props) => {
@@ -7,14 +8,14 @@ const NavBar = (props) => {
             <ul className="navbar nav">
                 <div id="nav-options">
                     <li className="nav-item active">
-                        <a href="#">GET CURRENT CITY AIR INDEX (HOME)</a>
+                        <a href="#">HOME</a>
                         </li>
                     <li className="nav-item">
-                        <a href="#">SEARCH SPECIFIC CITY AIR INDEX (SEARCH W/ BAR)</a>
+                        <p>SEARCH</p>
                         <Search countries={props.countries} />
                         </li>
                     <li className="nav-item">
-                        <a href="#">LOGO (IMAGE)</a>
+                        <img src={logo} alt="AQI logo"></img>
                         </li>
                 </div>
             </ul>
