@@ -18,7 +18,8 @@ public class Disaster {
     private long id;
     private String location;
     private String image;
-    private String message;
+    private String headline;
+    private String articleLink;
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date articleDate;
     private int severityLevel;
@@ -48,12 +49,16 @@ public class Disaster {
     }
 
     public String getMessage() {
-        return message;
+        return headline;
     }
 
     public void setMessage(String message) {
-        this.message = message;
+        this.headline = message;
     }
+
+    public String getArticleLink() { return articleLink; }
+
+    public void setArticleLink(String articleLink) { this.articleLink = articleLink}
 
     public Date getArticleDate() {
         return articleDate;
