@@ -10,15 +10,15 @@ class AQIData extends React.Component {
     }
 
     async getThreatLevel() {
-        await fetch("http://localhost:8080/levels/" + this.props.aqius.toString(), {
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            }
-        })
+        await fetch("/levels/" + this.props.aqius.toString())
             .then((response) => response.json())
             .then((json) => { this.setState({ threatLevel: json }) })
+
+        await this.setState({color: this.state.threatLevel.color, concern: this.state.threatLevel.concern, description: this.state.threatLevel.description})
     }
+
+
+
     render() {
         this.getThreatLevel();
 
@@ -31,9 +31,9 @@ class AQIData extends React.Component {
                     </br>
                     <h3>{this.props.aqius}</h3>
                     <br />
-                    CONCERN LEVEL
+                    {this.state.concern}
                     <br />
-                    DESCRIPTION
+                    {this.state.description}
                 </div>
             </div>
         )
