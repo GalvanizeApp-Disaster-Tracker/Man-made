@@ -10,3 +10,8 @@ ul {
 #nav-options {
   display: flex;
 }
+
+
+.card {
+  width: 18rem;
+}
