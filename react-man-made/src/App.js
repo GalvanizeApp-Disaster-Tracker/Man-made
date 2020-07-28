@@ -12,25 +12,63 @@ class App extends Component {
     };
     this.setCurrentLocation = this.setCurrentLocation.bind(this);
     this.setNearestLocation = this.setNearestLocation.bind(this);
+    // this.setClosestLocation = this.setClosestLocation.bind(this);
   }
 
   async componentDidMount() {
     await this.setNearestLocation();
-    const countries = await fetch("http://api.airvisual.com/v2/countries?key=2dfa7b58-3bfb-4ec7-bddc-6cf7ec9b1713");
+    // await this.setClosestLocation();
+    // this.setState({isLoading: false})
+    const countries = await fetch("http://api.airvisual.com/v2/countries?key=2dfa7b58-3bfb-4ec7-bddc-6cf7ec9b1713", {
+      method: 'GET',
+      mode: 'no-cors',
+      cache: 'default',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    });
     const countryBody = await countries.json();
-    this.setState({ countries: countryBody, isLoading: false });
+    await this.setState({ countries: countryBody, isLoading: false });
   }
 
   async setCurrentLocation(city, state, country) {
-    const response = await fetch("http://api.airvisual.com/v2/city?city=" + city + "&state=" + state + "&country=" + country + "&key=2dfa7b58-3bfb-4ec7-bddc-6cf7ec9b1713");
+    const response = await fetch("http://api.airvisual.com/v2/city?city=" + city + "&state=" + state + "&country=" +
+      country + "&key=2dfa7b58-3bfb-4ec7-bddc-6cf7ec9b1713", {
+      method: 'GET',
+      mode: 'no-cors',
+      cache: 'default',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    });
     const body = await response.json();
-    this.setState({ currentLocation: body.data });
+    await this.setState({ currentLocation: body.data });
   }
 
+
+  // async setClosestLocation(url = '', data = {}) {
+  //   const response = await fetch(url, {
+  //     method: 'GET',
+  //     mode: 'no-cors',
+  //     cache: 'default',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //   });
+  //   this.setState({currentLocation: response.json()})
+  // }
+
   async setNearestLocation() {
-    const response = await fetch("http://api.airvisual.com/v2/nearest_city?key=2dfa7b58-3bfb-4ec7-bddc-6cf7ec9b1713");
-    const body = await response.json();
-    this.setState({ currentLocation: body.data })
+    const response = await fetch("http://api.airvisual.com/v2/nearest_city?key=2dfa7b58-3bfb-4ec7-bddc-6cf7ec9b1713", {
+      method: 'GET',
+      mode: 'no-cors',
+      cache: 'default',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    });
+    // const body = await response.json();
+    await this.setState({ currentLocation: response.json() });
   }
 
   render() {

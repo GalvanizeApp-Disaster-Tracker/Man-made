@@ -10,7 +10,7 @@ class AQIData extends React.Component {
     }
 
     async getThreatLevel() {
-        await fetch("/levels/" + this.props.aqius.toString())
+        await fetch("http://localhost:8080/levels/" + this.props.aqius.toString())
             .then((response) => response.json())
             .then((json) => { this.setState({ threatLevel: json }) })
 
