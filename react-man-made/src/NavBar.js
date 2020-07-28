@@ -3,12 +3,13 @@ import logo from "./aqi.jpg"
 import Search from "./Search"
 
 const NavBar = (props) => {
+
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <ul className="navbar nav">
                 <div id="nav-options">
                     <li className="nav-item active">
-                        <a href="#">HOME</a>
+                        <button type="button" onClick={props.setNearestLocation}>HOME</button>
                         </li>
                     <li className="nav-item">
                         <p>SEARCH</p>
