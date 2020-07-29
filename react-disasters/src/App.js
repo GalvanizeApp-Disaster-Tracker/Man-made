@@ -51,12 +51,13 @@ function App() {
     return (
       <div className="App">
         <header className="App-header">
+          <h1>Our Man-Made Disasters</h1>
+          <h3>Oil spills. Industrial fires. Deforestation. Pollution.</h3>
+          <h4>Learn where your city stands, and read more about current man-made disasters. You can make a difference.</h4>
           <NavBar countries={countries} apiKey={apiKey} setCurrentLocation={setCurrentLocation} nearestLocation={nearestLocation} />
         </header>
-        <div id="body">
           <AQIData currentLocation={currentLocation} />
           <Headlines />
-        </div>
       </div>
     );
   }
