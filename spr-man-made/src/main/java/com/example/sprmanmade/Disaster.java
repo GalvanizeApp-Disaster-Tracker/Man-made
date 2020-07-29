@@ -20,7 +20,8 @@ public class Disaster {
     private String articleLink;
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date articleDate;
-    private int severityLevel;
+    private String type;
+    private String summary;
 
     public long getId() {
         return id;
@@ -66,11 +67,11 @@ public class Disaster {
         this.articleDate = articleDate;
     }
 
-    public int getSeverityLevel() {
-        return severityLevel;
-    }
+    public String getType() { return type; }
 
-    public void setSeverityLevel(int severityLevel) {
-        this.severityLevel = severityLevel;
-    }
+    public void setType(String type) { this.type = type; }
+
+    public String getSummary() { return summary; }
+
+    public void setSummary(String summary) { this.summary = summary; }
 }

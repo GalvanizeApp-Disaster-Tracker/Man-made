@@ -11,6 +11,7 @@ const Search = (props) => {
         let country = e.target.value;
         setSelectedCountry(country);
         setSelectedState("");
+        setCities([]);
         setSelectedCity("");
         await fetch("http://api.airvisual.com/v2/states?country=" + e.target.value + "&key=" + props.apiKey)
             .then(response => response.json())
@@ -39,7 +40,7 @@ const Search = (props) => {
     }
 
     return (
-        <form >
+        <form className="nav-form">
             <select onChange={e => setTheStates(e)}>
                 <option selected value>--Choose a country--</option>
                 {props.countries.map((country) => <option key={country.country} value={country.country}>{country.country}</option>)}
@@ -52,7 +53,7 @@ const Search = (props) => {
                 <option selected value>--Choose a city--</option>
                 {cities.map((city) => <option key={city.city} value={city.city}>{city.city}</option>)}
             </select>
-            <button type="button" onClick={() => setTheCurrentLocation(selectedCity,
+            <button type="button" className="btn btn-light" onClick={() => setTheCurrentLocation(selectedCity,
                 selectedState, selectedCountry)}>Submit</button>
         </form>
     )

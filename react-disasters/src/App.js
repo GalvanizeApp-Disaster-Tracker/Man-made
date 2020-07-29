@@ -51,10 +51,12 @@ function App() {
     return (
       <div className="App">
         <header className="App-header">
-          <NavBar countries={countries} apiKey={apiKey} setCurrentLocation={setCurrentLocation} nearestLocation={nearestLocation}/>
+          <NavBar countries={countries} apiKey={apiKey} setCurrentLocation={setCurrentLocation} nearestLocation={nearestLocation} />
         </header>
-        <AQIData currentLocation={currentLocation} />
-        <Headlines />
+        <div id="body">
+          <AQIData currentLocation={currentLocation} />
+          <Headlines />
+        </div>
       </div>
     );
   }
