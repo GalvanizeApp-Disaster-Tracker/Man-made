@@ -17,12 +17,7 @@ function Headlines() {
 
     return (
         <div id="article-space">
-            {/* <select id="disaster-type-sel">
-                <option selected value>--Choose a Type--</option>
-                <option value="Oil Spill">Oil Spill</option>
-                <option value="Radiation Leak">Radiation Leak</option>
-                <option value="Invasive Species">Invasive Species</option>
-            </select> */}
+            <h3>Read the following articles to learn what's going on in the world, and how you can help.</h3>
             {disasters.map(disaster => <Article data={disaster} />)}
         </div>
     )
