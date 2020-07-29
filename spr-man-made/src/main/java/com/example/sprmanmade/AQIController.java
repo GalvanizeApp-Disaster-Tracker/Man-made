@@ -20,13 +20,13 @@ public class AQIController {
     }
 
     // displays the 6 different air quality index levels
-    @GetMapping("/api/levels")
+    @GetMapping("/levels")
     public Iterable<AQI> getAqiLevels() {
         return this.repository.findAll();
     }
 
     // displays corresponding air quality index level based on input int
-    @GetMapping("/api/levels/{level}")
+    @GetMapping("/levels/{level}")
     public AQI getAQIByLevel(@PathVariable("level") int level) {
         return this.repository.getLevel(level);
     }

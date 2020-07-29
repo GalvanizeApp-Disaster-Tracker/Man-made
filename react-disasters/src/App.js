@@ -14,15 +14,6 @@ function App() {
   let [countries, setCountries] = useState([]);
   let [apiKey, setKey] = useState("1042c00e-348c-46e0-b350-c9960d3c3ffa")
 
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     // You can await here
-  //     const response = await MyAPI.getData(someId);
-  //     // ...
-  //   }
-  //   fetchData();
-  // }, [someId]); // Or [] if effect doesn't need props or state
-
   useEffect(() => {
     async function fetchCountries() {
       await fetch("http://api.airvisual.com/v2/countries?key=" + apiKey)
