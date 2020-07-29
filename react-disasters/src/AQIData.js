@@ -32,14 +32,14 @@ const AQIData = (props) => {
         <div className="card">
             <img className="card-img-top" src={logo} alt="Air Quality Index Logo" />
             <div className="card-body">
-                <h3>{props.currentLocation.city}, {props.currentLocation.state}, {props.currentLocation.country}</h3>
+                <h2>{props.currentLocation.city}, {props.currentLocation.state}, {props.currentLocation.country}</h2>
                 <br>
                 </br>
-                <h4>{aqius}</h4>
+                <h3>{aqius}</h3>
                 <br />
-                <h5>{threatLevel.concern}</h5>
+                <h4>{threatLevel.concern}</h4>
                 <br />
-                <h5>{threatLevel.description}</h5>
+                <h4>{threatLevel.description}</h4>
             </div>
         </div>
     )
