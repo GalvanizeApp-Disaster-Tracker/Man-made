@@ -3,13 +3,13 @@ import logo from './logo.svg';
 import './App.css';
 import NavBar from './NavBar'
 import AQIData from './AQIData'
+import Headlines from './Headlines'
 
 
 
 function App() {
   let [isLoading, setIsLoading] = useState(true);
   let [currentLocation, setCurrentLocation] = useState({});
-  let [aqius, setAQIUS] = useState();
   let [nearestLocation, setNearestLocation] = useState({});
   let [countries, setCountries] = useState([]);
   let [apiKey, setKey] = useState("1042c00e-348c-46e0-b350-c9960d3c3ffa")
@@ -27,7 +27,6 @@ function App() {
 
   useEffect(() => {
     async function fetchNearest() {
-      // setAQIUS(nearestLocation.current.pollution.aqius);
       await fetch("http://api.airvisual.com/v2/nearest_city?key=" + apiKey)
         .then(response => response.json())
         .then(result => setNearestLocation(result.data))
@@ -52,9 +51,10 @@ function App() {
     return (
       <div className="App">
         <header className="App-header">
-          <NavBar countries={countries} apiKey={apiKey} setCurrentLocation={setCurrentLocation} />
+          <NavBar countries={countries} apiKey={apiKey} setCurrentLocation={setCurrentLocation} nearestLocation={nearestLocation}/>
         </header>
-        <AQIData currentLocation={currentLocation} aqius={aqius} />
+        <AQIData currentLocation={currentLocation} />
+        <Headlines />
       </div>
     );
   }
