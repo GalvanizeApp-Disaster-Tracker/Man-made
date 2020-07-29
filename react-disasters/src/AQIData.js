@@ -8,7 +8,7 @@ const AQIData = (props) => {
     useEffect(() => {
         if (props.currentLocation.current) {
             function getThreatLevel() {
-                fetch("http://localhost:8080/levels/" + props.currentLocation.current.pollution.aqius)
+                fetch("/levels/" + props.currentLocation.current.pollution.aqius)
                     .then(response => response.json())
                     .then(result => setThreatLevel(result))
                    .catch(error => console.log('error', error));

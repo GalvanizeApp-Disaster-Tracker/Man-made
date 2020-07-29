@@ -6,7 +6,7 @@ function Headlines() {
 
     useEffect(() => {
             function getDisasters() {
-                fetch("http://localhost:8080/disasters")
+                fetch("/disasters")
                     .then(response => response.json())
                     .then(result => setDisasters(result))
                    .catch(error => console.log('error', error));

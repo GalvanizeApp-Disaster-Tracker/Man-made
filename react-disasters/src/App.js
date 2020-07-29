@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import NavBar from './NavBar'
 import AQIData from './AQIData'
@@ -12,7 +11,7 @@ function App() {
   let [currentLocation, setCurrentLocation] = useState({});
   let [nearestLocation, setNearestLocation] = useState({});
   let [countries, setCountries] = useState([]);
-  let [apiKey, setKey] = useState("1042c00e-348c-46e0-b350-c9960d3c3ffa")
+  let [apiKey, setKey] = useState("66f2cb04-569e-48b4-8505-4dd21c814ac9")
 
   useEffect(() => {
     async function fetchCountries() {
