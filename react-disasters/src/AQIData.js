@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import logo from './aqi.jpg'
 
 const AQIData = (props) => {
     let [aqius, setAQIUS] = useState();
@@ -9,12 +10,8 @@ const AQIData = (props) => {
             function getThreatLevel() {
                 fetch("http://localhost:8080/levels/" + props.currentLocation.current.pollution.aqius)
                     .then(response => response.json())
-                    .then(result => {
-                        console.log(result)
-                        setThreatLevel(result)
-                    })
-
-                    .catch(error => console.log('error', error));
+                    .then(result => setThreatLevel(result))
+                   .catch(error => console.log('error', error));
 
             }
             getThreatLevel();
@@ -22,18 +19,27 @@ const AQIData = (props) => {
         }
     }, [props.currentLocation])
 
+    useEffect(() => {
+        if (threatLevel.color) {
+            function changeBackgroundColor(color) {
+                document.body.style.backgroundColor = color;
+            }
+            changeBackgroundColor(threatLevel.color);
+        }
+    }, [threatLevel.color])
+
     return (
         <div className="card">
+            <img className="card-img-top" src={logo} alt="Air Quality Index Logo" />
             <div className="card-body">
-                (background color will be threat level color from db) <br />
-                <h1>{props.currentLocation.city}, {props.currentLocation.state}, {props.currentLocation.country}</h1>
+                <h3>{props.currentLocation.city}, {props.currentLocation.state}, {props.currentLocation.country}</h3>
                 <br>
                 </br>
-                <h3>{aqius}</h3>
+                <h4>{aqius}</h4>
                 <br />
-                {threatLevel.concern}
+                <h5>{threatLevel.concern}</h5>
                 <br />
-                {threatLevel.description}
+                <h5>{threatLevel.description}</h5>
             </div>
         </div>
     )
