@@ -13,7 +13,7 @@ const Search = (props) => {
         setSelectedState("");
         setCities([]);
         setSelectedCity("");
-        await fetch("http://api.airvisual.com/v2/states?country=" + e.target.value + "&key=" + props.apiKey)
+        await fetch("https://api.airvisual.com/v2/states?country=" + e.target.value + "&key=" + props.apiKey)
             .then(response => response.json())
             .then(result => setStates(result.data))
             .catch(error => console.log('error', error));
@@ -23,7 +23,7 @@ const Search = (props) => {
         let state = e.target.value;
         setSelectedState(state);
         setSelectedCity("");
-        await fetch("http://api.airvisual.com/v2/cities?state=" + e.target.value +
+        await fetch("https://api.airvisual.com/v2/cities?state=" + e.target.value +
             "&country=" + selectedCountry + "&key=" + props.apiKey)
             .then(response => response.json())
             .then(result => setCities(result.data))
@@ -32,7 +32,7 @@ const Search = (props) => {
 
     let setTheCurrentLocation = async function setTheCurrentLocation(city, state, country) {
         
-        await fetch("http://api.airvisual.com/v2/city?city=" + city + "&state=" + state + "&country=" +
+        await fetch("https://api.airvisual.com/v2/city?city=" + city + "&state=" + state + "&country=" +
             country + "&key=" + props.apiKey)
             .then(response => response.json())
             .then(result => props.setCurrentLocation(result.data))

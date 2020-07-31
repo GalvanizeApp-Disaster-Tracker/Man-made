@@ -15,7 +15,7 @@ function App() {
 
   useEffect(() => {
     async function fetchCountries() {
-      await fetch("http://api.airvisual.com/v2/countries?key=" + apiKey)
+      await fetch("https://api.airvisual.com/v2/countries?key=" + apiKey)
         .then(response => response.json())
         .then(result => setCountries(result.data))
         .catch(error => console.log('error', error));
@@ -26,7 +26,7 @@ function App() {
 
   useEffect(() => {
     async function fetchNearest() {
-      await fetch("http://api.airvisual.com/v2/nearest_city?key=" + apiKey)
+      await fetch("https://api.airvisual.com/v2/nearest_city?key=" + apiKey)
         .then(response => response.json())
         .then(result => setNearestLocation(result.data))
         .catch(error => console.log('error', error));
@@ -36,7 +36,7 @@ function App() {
 
   useEffect(() => {
     async function fetchNearest() {
-      await fetch("http://api.airvisual.com/v2/nearest_city?key=" + apiKey)
+      await fetch("https://api.airvisual.com/v2/nearest_city?key=" + apiKey)
         .then(response => response.json())
         .then(result => setCurrentLocation(result.data))
         .catch(error => console.log('error', error));
